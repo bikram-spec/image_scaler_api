@@ -1,0 +1,14 @@
+{
+    "development":{
+        "port":3000,
+        "mongo_url":"mongodb://localhost:27017/scale",
+        "jwt_Scret":"1e9d0549efafd6b980e92042280fe693c90b74980e41ffd0afe4442561528f51",
+        "jwt_expirection":"120m",
+        "root_dir":"uploads",
+        "base_dir":"/home/vikram/Documents/projects/nodejs/ml_data_preparer/api1/"
+    },
+    "production":{
+        "port":80,
+        "mongo_url":"mongodb://xxxx.com/scale"
+    }
+}

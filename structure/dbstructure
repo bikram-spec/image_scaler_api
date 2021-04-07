@@ -1,0 +1,37 @@
+main:-
+    login(POST):-
+        email:-email
+        password-password
+    signup(POST):-
+        institure name:=String
+        Password:- String;
+        email:- email:-
+    Dashboard(GET):-
+        add Dataset_name(POST):-
+            Dataset_name:- String
+            Dataset_type:- String
+            client_email:- email
+        Dataset_Images:-  
+
+//The main data structire of the client_email
+
+client :-
+    Data:-
+        email:- email
+        password: String
+        institution_name:String
+    Relation:-
+
+client_Dataset:-
+    Data:-
+        Dataset_name:-String
+        Dataset_type:String
+        Dataset_Status:(Pending,Running,completed)
+    Relation:-
+
+Dataset_images:-
+    Data:-
+        Images:-(image format)
+    Relation:-
+        
+

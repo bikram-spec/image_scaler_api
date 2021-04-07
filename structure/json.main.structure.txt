@@ -1,0 +1,172 @@
+// Collection of users
+{
+    "_id": "ObjectID(hfhfhkshfiaeff)",
+    "company_name":"welcome to the world",
+    "email":"welcome@gmail.com",
+    "Password":"ajkfsdihfwf jafhfhsifhiufh  dhihfdasfhaisuhf",
+    "salt_secreat":"_hahhsdifhaehf fvvbjhfdre rfjsfhiug",
+    "Datasets_location":[ "ObjectID1()","ObjectID2"]
+},
+{
+    "_id": "ObjectID(hkdjfhkdhkjdhfdsh)",
+    "company_name":"Ninja is here",
+    "email":"ninja@gmail.com",
+    "Password":"ajkfsdihfwf hafsdhfuhfrsg  dhihfdasfhaisuhf",
+    "salt_secreat":"_hahhsdifhaehf fjdbsajhfdgbae rfjsfhiug",
+    "Datasets_location":[ "ObjectID3()"]
+}
+// Schema Desing
+    {
+        company_name:{
+            type:String,
+            required:true
+        },
+        email:{
+            Type:email,
+            required:true
+        },
+        Password:{
+            type:String,
+            required1:true
+        },
+        SaltString:String,
+        Datasets_location:[
+            Data:{
+                type:mongoose.Type.Schema.ObjectID,
+                ref:'Dataset'
+            }
+        ]
+    }
+
+// Collections of Datasets
+{
+    "_id":"ObjectID1()",
+    "Dataset_name":"abc",
+    "Dataset_type":"xyz",
+    "Date_of_creation";"Date.Now()",
+    "CreatedBy":"welcome@gmail.com",
+    "Datset_data":["imageid","imageid1"]
+},
+{
+    "_id":"ObjectID2()",
+    "Dataset_name":"abc2",
+    "Dataset_type":"xyz2",
+    "Date_of_creation":"Date.Now()",
+    "CreatedBy":"welcome@gmail.com",
+    "Datset_data":["imageid3","imageid4"]
+
+},
+{
+    "_id":"ObjectID3()",
+    "Dataset_name":"abc3",
+    "Dataset_type":"xyz3",
+    "Date_of_creation":"Date.Now()",
+    "CreatedBy":"ninja@gmail.com",
+    "Datset_data":["imageid5","imageid6"]
+}
+
+//Schema of the Dataset
+
+{
+    Dataset_name:{
+        type:String,
+        required:true
+    },
+    Instucution:{
+        type:String,
+        required:true
+    },
+    Dataset_type: {
+        type:String
+        required:true,
+        enum: ["image segementaion","image classfication ","etc"]
+    },
+    Date_of_creation:{
+        type:Date,
+        required:true,
+    },
+    CreatedBy; {
+        Type:String,
+        required:true
+    },
+    Dataset_data:[
+        Data_details:{
+            type:mongoose.Schema.Type.ObjectID,
+            ref:"Dataset_Data"
+        }
+    ]
+
+
+}
+
+// Collection of Data 
+
+{
+    "_id":"imageid",
+    belongs_to_project:"abc"
+    filename: 'shopping-1605808537323.txt',
+    path: 'uploads/shopping-1605808537323.txt',
+    originalname: 'shopping',
+    Scaled:- enum["incomplete","inprogress","completed"]
+},
+{
+    "_id";"imageid1",
+    "belongs_to_project"
+    filename: 'shopping1-1605808537323.txt',
+    path: 'uploads/shopping1-1605808537323.txt',
+    originalname: 'shopping1'
+},
+{
+    filename: 'shopping3-1605808537323.txt',
+    path: 'uploads/shopping3-1605808537323.txt',
+    originalname: 'shopping3'
+},
+{
+    filename: 'shopping4-1605808537323.txt',
+    path: 'uploads/shopping4-1605808537323.txt',
+    originalname: 'shopping4'
+},
+{
+    filename: 'shopping5-1605808537323.txt',
+    path: 'uploads/shopping5-1605808537323.txt',
+    originalname: 'shopping5'
+},
+
+//Schema of the Dataset_Data
+
+{
+    filename:{
+        type:String,
+        path: String,
+        originalname:String,
+        Project_name:String
+    }
+}
+
+//properties of the file object in multer: -
+	{
+  fieldname: 'file',
+  originalname: 'shopping',
+  encoding: '7bit',
+  mimetype: 'application/octet-stream',
+  destination: 'uploads',
+  filename: 'shopping-1605808537323.txt',
+  path: 'uploads/shopping-1605808537323.txt',
+  size: 37
+}
+
+// image delivery mechanism
+Scaler_user
+{
+    id:- ObjectId();
+    name:String,
+    Address:- String,
+    email:-email,
+    Password:- String
+}
+Scaler_tasks
+{
+    Scaler_Status:- Online
+    No_of_images_Scaled:- Number
+
+}

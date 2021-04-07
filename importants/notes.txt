@@ -1,0 +1,75 @@
+express:-
+    1) to send the response in the parts the method that is used is res.write() and after that the connection 
+        needs to be closed usign method res.end();
+    2) because the res.send() method call the res.end() methods automatically
+    3) The res.write() method send only 'string data'
+    4) To send the json data we need to convert the json into string using method "JSON.stringfy()"
+        This will convert the json into string.
+    5) In a app.get('/something/:id') if you want id field to be optional then the below method is used
+        use app.get('/something/:id?') this will treat id as a optional parameter  
+ejs:-
+    1) when you declare static folder in ejs it takes routes after the public folder
+    2) The include statement takes the route as a relative path ...
+    3) The path of the stylesheet and the javascirpt must begin with the "/javascirpt/filename" or "/stylesheet/style.css" is must "/" is must 
+
+mongoose :-
+    1) to make the mongoose query on the id filed the _id files must be without quots 
+        eg:-  users.findOne({_id:req._id}... this needs to be followed .
+    2) the mongoose save method first returns 'doc'  and then retunr 'err' mongoose.save().then((doc,err))
+    3) to select selective field in mongoose we need to use select({ "name": 1, "_id": 0}) and another method Model.find({}, 'first last', function (err, docs) {
+    4) the result returned by the mongoose is not a javascript object it's a mongoose document we need to convert it into javascript
+        Object using (document.toObeject());
+
+    
+loadsh:- 
+    1) pick method in loadsh is used to get the selective values from the json data
+        structure:- _.pick(json_object,['field_name']);
+        eg:- _.pick(user,['firstname','lastname']);
+
+
+Angular:- 
+    1) how to append the vale inside the observable in angular 
+        Code:-
+            this.Observable_name.pipe(map(any_variable_name=>{
+                any_variable_name.push(array_item);
+                return any_variable_name;
+            }))
+    2) To pass the parameter to the url the below method is used
+        app-routing-module
+            {path:'main_path/:parameter',component:'component_name'}
+        component view:-
+            [routerlink]="['main_path','parameter']"
+    3) To get the parameter form the url:-
+        any .ts file:-
+            imports:-                
+                import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+                import { switchMap } from 'rxjs/operators';
+            constructor:- 
+                constructor(
+                    private route: ActivatedRoute,
+                    private router: Router
+                ) { }
+            ngOninit() or any non-void function
+                param
+
+                this.parm=this.route.paramMap.pipe(
+                    switchMap((params:ParamMap)=> params.get('title'))
+                )
+                
+                To print parameter value;
+                    console.log(this.parm.source.source._value.title);
+
+Typescript:-
+    1) To add the element at the staritng of the array use function unshift;
+        code:-
+            array_name.unshift(element);
+    2) To add the element at the end of the array use functiom push;
+        code:- 
+            array_name.push(element);
+
+node.js middleware:-
+    to create a directory if the directory does not exists use {recursive:true} will create if it does not exits
+
+Passport :-
+    if you have more than one login form and you are using passport local strategy you
+    need to assign name to them to be sucfully.

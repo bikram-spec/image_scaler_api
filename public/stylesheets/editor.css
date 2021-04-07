@@ -1,0 +1,46 @@
+.body
+{
+    overflow-x: hidden;
+}
+.image_frame 
+{
+    border-radius: 5px;
+    overflow: scroll;
+}
+.action {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+#submit_button {
+    justify-content: space-between;
+    display: flex;
+    float: right;
+}
+#message {
+    height: 50px;
+    overflow-x: hidden;
+}
+#broken_button {
+    margin-top: 6px;
+    margin-left: 50px;
+    display: flex;
+}
+#zoom-in
+{
+    margin-top: 5px;
+    width: 200px;
+}
+#zoom-out {
+    margin-top: 5px;
+    width: 200px;
+}
+#reset-zoom {
+    margin-top: 5px;
+    width: 200px;
+}
+#err-msg {
+    visibility: hidden;
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
+}
