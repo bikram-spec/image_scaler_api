@@ -4,93 +4,77 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="/stylesheets/scaledimg.css">
 </head>
 <body>
 
-<h1>Bounding box annotator demo</h1>
-<div id="bbox_annotator" style="display:inline-block"></div>
-<div style="display:inline-block;vertical-align:top;">
-  <div>
-    <textarea id="annotation_data" name="annotation" rows="30" cols="50" style="font-family:monospace;" readonly></textarea>
+  <h2 style="text-align:center">Lightbox</h2>
+
+  <div class="row">
+    <div class="column">
+      <img src="/assets/img_nature.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+      <img src="/assets/img_snow.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+      <img src="/assets/img_mountains.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+      <img src="/assets/img_lights.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+    </div>
   </div>
-  <div>
-    <input id="reset_button" type="reset" />
+  
+  <div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+  
+      <div class="mySlides">
+        <div class="numbertext">1 / 4</div>
+        <img src="/assets/img_nature_wide.jpg" style="width:100%">
+      </div>
+  
+      <div class="mySlides">
+        <div class="numbertext">2 / 4</div>
+        <img src="/assets/img_snow_wide.jpg" style="width:100%">
+      </div>
+  
+      <div class="mySlides">
+        <div class="numbertext">3 / 4</div>
+        <img src="/assets/img_mountains_wide.jpg" style="width:100%">
+      </div>
+      
+      <div class="mySlides">
+        <div class="numbertext">4 / 4</div>
+        <img src="/assets/img_lights_wide.jpg" style="width:100%">
+      </div>
+      
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
+  
+  
+      <div class="column">
+        <img class="demo cursor" src="/assets/img_nature_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="/assets/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Snow">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="/assets/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="/assets/img_lights_wide.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+      </div>
+    </div>
   </div>
-</div>
+  
 
-
-<script src="/javascripts/bbox_annotator.js"></script>
-<script src="/javascripts/editor.js"></script>
-
+<!-- link for the javascript  -->
+  <script src="/javascripts/scaledimg.js"></script>
 </body>
 </html>
 
-
-<!-- 
-<html>
-  <head>
-    <title>Bounding box annotator demo</title>
-    <%- include('../templates/header'); -%> 
-   <link rel="stylesheet" href="/stylesheets/styles.css">
-  </head>
-  <body>
-    <div class="row">
-      <div class="col-sm-2.3">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Information:- </h5>
-            <p class="card-text"><b>Instruction:- </b>Annotation all The cats and dogs in the image</p>
-            <p class="card-text"><b>Task Id:-</b> 324jh23432423bmnbm234</p>
-            <p class="card-text"><b>Urgency:-</b>Day</p>
-          </div>
-        </div>
-
-          <div class="annotator">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title"><b> Annotations:-</b></h5>
-                <textarea id="annotation_data" name="annotation" rows="15" cols="30" style="font-family:monospace;" readonly></textarea>
-                <div class="action">
-                  <button type="button" id="reset_button" class="btn btn-danger">Reset</button>  
-                  <button type="button" id="submit_button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-
-      
-      <div class="col-7.5">
-          <div id="bbox_annotator" style="display:inline-block">
-            <div class="image_frame">
-              <img class="rounded" id="image" />
-            </div>
-          </div>
-      </div>
-
-
-      
-      <div class="col" style="overflow-x: hidden;">
-        <div class="message">
-          <div class="card" style="width: 13rem">
-            <div class="card-body">
-              <h5 class="card-title"><b>Message:-</b></h5>
-                <input type="text" class="form-control" name="message" placeholder="Enter your Message..." id="message">
-                <button type="button" id="broken_button" class="btn btn-primary">Broken</button>
-            </div>
-          </div>
-        </div>    
-        <div class="view-controlle">
-          <button type="button" id="zoom-in" class="btn btn-primary">Zoom IN</button>
-          <button type="button" id="zoom-out" class="btn btn-primary">zoom-Out</button>
-          <button type="button" id="reset-zoom" class="btn btn-primary">reset-zoom</button>
-        </div>
-      </div>
-
-
-    </div>
-    <script src="/javascripts/main.js"></script>
-    <script src="/javascripts/bbox_annotator1.js"></script>
-    <script src="/javascripts/index1.js"></script>
-  </body>
-</html> -->

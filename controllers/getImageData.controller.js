@@ -41,3 +41,24 @@ module.exports.getImageData=async (req,res,next)=>{
         })
     }
 }
+
+
+// Controller of the scaled image 
+module.exports.getScaledImageData=async (req,res,next)=>{
+    console.log("The request reaches the get Images controller...")
+        //send the names of the files array;
+        console.log(req.dataset_title);
+        Dataset.find({"belongsTo":req.dataset_title,"Status":"completed"},'filename originalname anotations -_id',(err,doc)=>{
+            if(err || !doc){
+                console.log("the error is occured...")
+                console.log("the error msg is ",err);
+                res.send(err);
+            }
+            else 
+            {
+                console.log("the query executed succfully...");
+                console.log(doc);
+                res.send(doc);
+            }
+        })
+}

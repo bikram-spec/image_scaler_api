@@ -1,3 +1,9 @@
+$("#image").on("load",function(){
+ var ctx=document.getElementById("canvas-img").getContext("2d");
+ var img=document.getElementById("image");
+ console.log(img.width)
+ ctx.drawImage(img,0,0,img.width,img.height); 
+})
 $(document).ready(function() {
   // Initialize the bounding-box annotator.\
   // server msg checker 
@@ -27,6 +33,22 @@ $(document).ready(function() {
             // Input the text area on change. Use "hidden" input tag unless debugging.
             // <input id="annotation_data" name="annotation_data" type="hidden" />
             // $("#annotation_data").val(JSON.stringify(entries))
+            console.log(entries);
+            let new_entries=[]
+            // Adding the px at the end of the annotations 
+            Object.values(entries).forEach(function(value){
+              if(typeof(value.left)!="string"&&typeof(value.top)!="string"&&typeof(value.width)!="string"&&typeof(value.height)!="string")
+              {
+                value.left=value.left+"px";
+                value.top=value.top+"px";
+                value.width=value.width+"px";
+                value.height=value.height+"px";
+                new_entries.push(value);
+              }
+            })
+            // console.log(new_entries);
+            // new_entries.push(val)
+            
             $("#annotation_data").text(JSON.stringify(entries, null, "  "));
           }
         });
@@ -63,6 +85,7 @@ $(document).ready(function() {
           socket.emit("annotations",annotation)
           socket.emit("getdetails","");
           annotator.clear_all();
+
         })
 
         // broken image Handler 
@@ -85,6 +108,12 @@ $(document).ready(function() {
             annotator.clear_all();
           }
         })
+
+        // handeling broken images ends here 
+        
+        
+
+        // captureing canvas ends here 
     
     }
     else 

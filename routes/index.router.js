@@ -17,7 +17,7 @@ const { userProfile } = require('../controllers/userProfile.controller');
 const { AddDatasetName}= require('../controllers/AddDatasetName.controller');
 const { uploadImageDataset } =require('../controllers/uploadImageData.controller');
 const { getprojectdetails }= require('../controllers/AddDatasetName.controller');
-const { getImageData }= require('../controllers/getImageData.controller')
+const { getImageData,getScaledImageData }= require('../controllers/getImageData.controller')
 
 
 //  demo testing controller
@@ -61,6 +61,9 @@ const router= express.Router()
     router.get('/getdata',jwtVerifier,Dataset_helper,getImageData)
     /* This is a serious vulnerability that needs to be get fixed you need to add jwtverifier to the path */
     router.get('/getdata/:imageName',getImageData)
+
+    // this the is the route to get the scalde images in the 
+    router.get('/getScaleddata',jwtVerifier,Dataset_helper,getScaledImageData);
 
 
 module.exports= {router};

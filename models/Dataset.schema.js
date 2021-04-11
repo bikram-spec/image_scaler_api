@@ -32,16 +32,16 @@ const dataset_schema=new mongoose.Schema({
     anotations:[
         {
             left:{
-                type:Number
+                type:String
             },
             top:{
-                type:Number
+                type:String
             },
             width:{
-                type:Number
+                type:String
             },
             height:{
-                type:Number
+                type:String
             },
             label:{
                 type:String
