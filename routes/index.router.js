@@ -17,7 +17,8 @@ const { userProfile } = require('../controllers/userProfile.controller');
 const { AddDatasetName}= require('../controllers/AddDatasetName.controller');
 const { uploadImageDataset } =require('../controllers/uploadImageData.controller');
 const { getprojectdetails }= require('../controllers/AddDatasetName.controller');
-const { getImageData,getScaledImageData }= require('../controllers/getImageData.controller')
+const { getImageData,getScaledImageData }= require('../controllers/getImageData.controller');
+const { getAudits } = require('../controllers/getAudits.controller')
 
 
 //  demo testing controller
@@ -65,5 +66,6 @@ const router= express.Router()
     // this the is the route to get the scalde images in the 
     router.get('/getScaleddata',jwtVerifier,Dataset_helper,getScaledImageData);
 
+    router.get("/getaudits",jwtVerifier,getAudits)
 
 module.exports= {router};
