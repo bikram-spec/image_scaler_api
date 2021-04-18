@@ -7,6 +7,8 @@ $("#image").on("load",function(){
 $(document).ready(function() {
   // Initialize the bounding-box annotator.\
   // server msg checker 
+
+
   socket.on("msg",function(msg){
     console.log(msg);
   })

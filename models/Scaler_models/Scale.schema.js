@@ -15,6 +15,9 @@ const scaler_schema= new mongoose.Schema(
             required:true,
             unique:true
         },
+        task_completed: {
+            type:Number
+        },
         password:{
             type:String,
             required:true,

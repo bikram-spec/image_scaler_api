@@ -16,7 +16,8 @@ module.exports.test = (req,res,next)=>{
 }
 
 module.exports.editor= (req,res,next)=>{
-        res.render("pages/editor")
+        console.log(req.email)
+        res.render("pages/editor",{user:req.email,_id:req._id})
 }
 module.exports.demo=(req,res,next)=>{
     res.render("pages/demo");
