@@ -9,3 +9,5 @@ console.log($("#user").val())
 }) */
 socket.emit("test","this is the test message...");
 socket.emit("getdetails","");
+socket.emit("auth",$("#user").val());
+// socket.emit()

@@ -2,11 +2,18 @@ const jwt=require('jsonwebtoken');
 const { scaler } = require("../models/Scaler_models/Scale.schema")
 
 module.exports.sjwtverfier=(req,res,next)=>{
-    console.log(req.params['token']);
-    var token=req.params['token'];
+    if("sauthorization" in req.headers){
+        var token=req.headers["sauthorization"].split(' ')[1];
+    }
+    else 
+    {
+        // console.log(req.params['token']);
+        if(req.params['token'])
+        {
+            var token=req.params['token'];
+        }
+    }
     if(token){
-        // token=etoken["authorization"].split(' ')[1];
-        // console.log(req.headers["authorization"]);
         jwt.verify(token,process.env.jwt_Scret,(err,decode)=>{
             if(err){
                 res.status(403).send("invaild json web token\n");

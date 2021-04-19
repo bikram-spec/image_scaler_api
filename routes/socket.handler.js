@@ -3,6 +3,7 @@
 // custom model imports 
 const { Dataset }= require("../models/Dataset.schema");
 const { projectDetails } = require("../models/projectDetail.schema");
+const { scaler } = require("../models/Scaler_models/Scale.schema")
 
 // other config import ...
 
@@ -12,9 +13,28 @@ const { getdetails } = require("../controllers/Scaler_controller/request_control
 module.exports=(io)=>{
     // console.log("io",io)
     counter=0;
+    // listening to the connection
     io.sockets.on('connection', function (socket) {
 
         counter++;
+        // adding the auth handler here
+        socket.on("auth",function(user){
+            socket.email=user;
+            console.log(user);
+            scaler.findOne({"email":user},(err,doc)=>{
+                if(err || !doc)
+                {
+                    console.log("do nothings...");
+                }
+                else 
+                {
+                    socket.user=doc;
+                }
+            })
+        })
+        // adding the auth handler ends here
+
+
         // sending details to the client to edit image 
         socket.on("getdetails",function(){
             // callback begins here 
@@ -71,11 +91,17 @@ module.exports=(io)=>{
 
         // Saving Anotation
         socket.on("annotations",function(annotation_data){
+            // converting the string annoration to json obj
             let anodata=JSON.parse(annotation_data)
             console.log(typeof(anodata));
             let doc=socket.doc;
             doc.Status="completed";
             doc.anotations=anodata;
+            // adding task into the scaler profile begins
+            let scaler=socket.user;
+            scaler.task_completed=scaler.task_completed+1;
+            scaler.save();
+            // adding task to scaler profile ends ...
             doc.save().then((doc,err)=>{
                 if(err || !doc)
                 {
@@ -94,6 +120,11 @@ module.exports=(io)=>{
             let doc = socket.doc;
             doc.Status="rejected";
             doc.message=msg;
+            // adding one task into the scaler profile
+            let scaler=socket.user;
+            scaler.task_completed=scaler.task_completed+1;
+            scaler.save();
+            // adding task to the user profile ends here 
             doc.save().then((doc,err)=>{
                 if(err,!doc)
                 {
