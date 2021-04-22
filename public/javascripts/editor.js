@@ -1,9 +1,11 @@
-$("#image").on("load",function(){
- var ctx=document.getElementById("canvas-img").getContext("2d");
- var img=document.getElementById("image");
- console.log(img.width)
- ctx.drawImage(img,0,0,img.width,img.height); 
-})
+// This will addd the authentation to  the editor  routes
+console.log($("#user").val());
+socket.emit("auth",$("#user").val());
+
+// this event to send the request to the server to get the image data
+socket.emit("getdetails","");
+// this event will lisen to the details event listeners
+
 $(document).ready(function() {
   // Initialize the bounding-box annotator.\
   // server msg checker 

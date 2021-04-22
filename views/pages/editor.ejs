@@ -20,7 +20,7 @@
             <div class="card" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title"><b> Annotations:-</b></h5>
-                <textarea id="annotation_data" name="annotation" rows="15" cols="30" style="font-family:monospace;" readonly></textarea>
+                <textarea id="annotation_data" name="annotation" rows="11" cols="23" style="font-family:monospace;" readonly></textarea>
                 <div class="action">
                   <button type="button" id="reset_button" class="btn btn-danger">Reset</button>  
                   <button type="button" id="submit_button" class="btn btn-success">Success</button>
@@ -54,16 +54,11 @@
           <button type="button" id="zoom-in" class="btn btn-primary">Zoom IN</button><br>
           <button type="button" id="zoom-out" class="btn btn-primary">zoom-Out</button><br>
           <button type="button" id="reset-zoom" class="btn btn-primary">reset-zoom</button>
-          <button type="button" id="capture-canvas" class="btn btn-primary">Capture Canvas</button>
         </div>
       </div>
       
     </div>
-
-    <!-- Canvas image creater -->
-    <div class="canvas-image">
-      <canvas  id="canvas-img" style="width: 860px;height: 620px;"></canvas>
-    </div>
+    
     <div class="hidden-code">
       <input type="hidden" name="user" id="user" value="<%= user %>">
     </div>

@@ -5,10 +5,25 @@
     <link rel="stylesheet" href="/stylesheets/cchart.css">
 </head>
 <body>
+    <!-- this is for the labels -->
+    <% labels.forEach(function(label){ %>
+        <input type="hidden" name="labels[]"  value="<%= label %>">
+      <% }) %>
+    <!-- this is for comleted-->
+    <% completed.forEach(function(complete){ %>
+        <input type="hidden" name="completed[]"  value="<%= complete %>">
+      <% }) %>
+    <!-- this is for rejected -->
+    <% rejected.forEach(function(rejecte){ %>
+        <input type="hidden" name="rejected[]" value="<%= rejecte %>">
+      <% }) %>
+    <!-- this is for incomplte -->
+    <% incomplete.forEach(function(val){ %>
+        <input type="hidden" name="incomplete[]" value="<%= val %>">
+      <% }) %>
+
     <!-- left hand side cards    -->  
-    <canvas id="myChart" style="height: 190px; width: 100%;"></canvas>
-    <canvas id="myChart1" style="height: 190px; width: 100%;"></canvas>
-    <canvas id="myChart2" style="height: 190px; width: 100%;"></canvas>
+    <canvas id="myChart" style="height: 550px; width: 100%;"></canvas>
     <!-- let side cards ends -->
     <!-- footer inclusion  -->
     <script src="/javascripts/cchart.js"></script>

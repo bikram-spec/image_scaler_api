@@ -3,9 +3,20 @@ const jwt= require('jsonwebtoken');
 const { users }= require('../models/signup.schema');
 
 module.exports.jwtVerifier=(req,res,next)=>{
-    console.log("The request enter in jwt verifier ...")
     if("authorization" in req.headers){
-        token=req.headers["authorization"].split(' ')[1];
+        var token=req.headers["authorization"].split(' ')[1];
+    }
+    else 
+    {
+        // console.log(req.params['token']);
+        if(req.params['token'])
+        {
+            var token=req.params['token'];
+        }
+    }
+    console.log("The request enter in jwt verifier ...")
+    if(token){
+        // token=req.headers["authorization"].split(' ')[1];
         // console.log(req.headers["authorization"]);
         jwt.verify(token,process.env.jwt_Scret,(err,decode)=>{
             if(err){
