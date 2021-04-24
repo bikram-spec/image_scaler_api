@@ -23,7 +23,7 @@ const projectDetailSchema=new mongoose.Schema({
     Dataset_type : {
         type: String,
         required:true,
-        enum:['image segementation','image classfication']
+        enum:['image annotation','image classfication']
     },
     Dataseet_Data: [{
         type:mongoose.Schema.Types.ObjectId,

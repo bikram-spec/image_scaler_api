@@ -55,6 +55,7 @@ module.exports.uploadImageDataset=(req,res,next)=>{
                 data.path=Object.path;
                 data.originalname=Object.originalname;
                 data.belongsTo=req.dataset_title;
+                data.type=req.type;
                 data.createdBy=user.email;
                 data.Status="incomplete";
                 data.save().then((doc,err)=>{

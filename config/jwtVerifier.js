@@ -1,6 +1,7 @@
 const { authorize } = require("passport")
 const jwt= require('jsonwebtoken');
 const { users }= require('../models/signup.schema');
+const { projectDetails } = require('../models/projectDetail.schema')
 
 module.exports.jwtVerifier=(req,res,next)=>{
     if("authorization" in req.headers){
@@ -57,7 +58,17 @@ module.exports.Dataset_helper=(req,res,next)=>{
         dataset_title=req.headers["dataset_name"];
         //console.log(dataset_title);
         req.dataset_title=dataset_title;
-        next();
+        projectDetails.findOne({"Dataset_title":dataset_title},(err,doc)=>{
+            if(err || !doc)
+            {
+                res.send("invaild project name...")
+            }
+            else 
+            {
+                req.type=doc.Dataset_type;
+                next();
+            }
+        })
     }
     else 
     {

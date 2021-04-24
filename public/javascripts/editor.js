@@ -3,7 +3,7 @@ console.log($("#user").val());
 socket.emit("auth",$("#user").val());
 
 // this event to send the request to the server to get the image data
-socket.emit("getdetails","");
+socket.emit("getdetails",{type:"image annotation"});
 // this event will lisen to the details event listeners
 
 $(document).ready(function() {

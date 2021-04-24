@@ -24,6 +24,9 @@ const dataset_schema=new mongoose.Schema({
         type:String,
         //required:true
     },
+    type:{
+        type:String
+    },
     Status:{
         type:String,
         required:true,
@@ -48,6 +51,11 @@ const dataset_schema=new mongoose.Schema({
             }
         }
     ],
+    cannotation:[{
+        attribute:{
+            type:String
+        }
+    }],
     message:{
         type:String
     }

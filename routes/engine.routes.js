@@ -25,7 +25,7 @@ module.exports = function(io){
     // This route is used to display the image annotation editor
     eroutes.get("/editor/:token",sjwtverfier,editor);
     // this route is used to disply the image classfication editor
-    eroutes.get("/ceditor/",ceditor);
+    eroutes.get("/ceditor/:token",sjwtverfier,ceditor);
 
 
     // testing routes

@@ -14,7 +14,7 @@ module.exports.editor= (req,res,next)=>{
 
 // this controller is used to display the clasfication editor to the client
 module.exports.ceditor=(req,res,next)=>{
-    res.render("pages/ceditor");
+    res.render("pages/ceditor",{user:req.email,_id:req._id});
 }
 
 // scaler view controller 
