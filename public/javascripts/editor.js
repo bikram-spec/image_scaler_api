@@ -87,7 +87,7 @@ $(document).ready(function() {
           // console.log($("#annotation_data").val())
           var annotation= $("#annotation_data").val()
           socket.emit("annotations",annotation)
-          socket.emit("getdetails","");
+          socket.emit("getdetails",{type:"image annotation"});
           annotator.clear_all();
 
         })
@@ -107,7 +107,7 @@ $(document).ready(function() {
               })
             }
             socket.emit("broken",message);
-            socket.emit("getdetails","")
+            socket.emit("getdetails",{type:"image annotation"})
             $("#message").val("")
             annotator.clear_all();
           }

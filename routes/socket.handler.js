@@ -118,7 +118,8 @@ module.exports=(io)=>{
             socket.on("classfication",function(data){
                 let doc=socket.doc;
                 doc.Status="completed";
-                doc.anotations=data.objects;
+                console.log(data.objects);
+                doc.cannotation=data.objects;
                 // adding task into the scaler profile begins
                 let scaler=socket.user;
                 scaler.task_completed=scaler.task_completed+1;

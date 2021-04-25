@@ -52,9 +52,7 @@ const dataset_schema=new mongoose.Schema({
         }
     ],
     cannotation:[{
-        attribute:{
             type:String
-        }
     }],
     message:{
         type:String
