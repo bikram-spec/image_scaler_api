@@ -7,7 +7,7 @@ module.exports.getImageData=async (req,res,next)=>{
     {
         //send the names of the files array;
         console.log(req.dataset_title);
-        Dataset.find({"belongsTo":req.dataset_title},'filename originalname Status -_id',(err,doc)=>{
+        Dataset.find({"belongsTo":req.dataset_title},'filename originalname Status cannotation -_id',(err,doc)=>{
             if(err || !doc){
                 console.log("the error is occured...")
                 console.log("the error msg is ",err);
@@ -48,7 +48,7 @@ module.exports.getScaledImageData=async (req,res,next)=>{
     console.log("The request reaches the get Images controller...")
         //send the names of the files array;
         console.log(req.dataset_title);
-        Dataset.find({"belongsTo":req.dataset_title,"Status":"completed"},'filename originalname anotations -_id',(err,doc)=>{
+        Dataset.find({"belongsTo":req.dataset_title,"Status":"completed"},'filename originalname anotations cannotation  -_id',(err,doc)=>{
             if(err || !doc){
                 console.log("the error is occured...")
                 console.log("the error msg is ",err);
