@@ -1,8 +1,10 @@
 /* all the prebuilt moduules import  */
 const _ =require('loadsh');
+const fs = require('fs');
 
 /* user defined modules import  */
 const {projectDetails} = require('../models/projectDetail.schema');
+const { Dataset }= require('../models/Dataset.schema')
 const  { users} = require('../models/signup.schema');
 
 /* main export class */
@@ -50,12 +52,75 @@ module.exports.updateDataset=(req,res,next)=>{
             doc.ObjectsToAnnotate=req.body.objects;
             doc.Instruction=req.body.Instruction;
             doc.save().then(
-                res.status(200).json({success:"the document updated succfully..."})
+                (status,err)=>{
+                    if(err || (!status)){
+                        res.status(500).json({error:"The internal sever Occured..."})
+                    }
+                    else 
+                    {
+                        res.status(200).json({msg:"The document updated succfully..."});
+                    }
+                }
             )
         }
     })
 }
 /* update dataset ends here */
+
+/* Delete Dataset */
+module.exports.deleteDataset=(req,res,next)=>{
+
+    Dataset.find({"belongsTo":req.body.title},(err,files)=>{
+        if(err || (!files) )
+        {
+            // res.status(204).json({msg:"There is no data available..."})
+            console.log("there is no data available...")
+        }
+        else
+        {
+            /* Deleting from database */
+            Dataset.deleteMany({"belongsTo":req.body.title},(err)=>{
+                if(err)
+                {
+                    // res.status(500).json({errror:"Failed To delete Dataset Data..."})
+                    console.log("failed to delete the data from the server")
+                }
+                else
+                {
+                    // res.status(200).json({msg:"The Dataset Data is deleted succfully..."});
+                    console.log("The Data is deleted form the server...");
+                }
+            })
+            /* deliting from database completes here */
+            /* deleting from file system  */
+                files.forEach((file)=>{
+                    fs.unlink(`${process.env.root_dir}/${file.path}`,(err)=>{
+                        if(err)
+                        {
+                            // res.status(500).json({error:"Failed to delete the file from the server"});
+                            console.log("we are failed to delete the file from server..")
+                        }
+                    })
+                })
+            /* deleting from file systeem end */
+
+        }
+    })
+
+    /* deleting project */
+    projectDetails.deleteOne({Dataset_title:req.body.title},(err)=>{
+        if(err)
+        {
+            res.status(500).json({error:"The Dataset is Failed To Delete"})
+        }
+        else 
+        {
+            res.status(200).json({msg:"The Dataset Deleted Succfully.."})
+        }
+    })
+
+}
+/*  */
 
 /* get project details method */
 

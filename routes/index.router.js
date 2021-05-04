@@ -14,7 +14,7 @@ const { dataset_directory_checker }= require('../config/file.config');
 const { signup } = require('../controllers/signup.controller');
 const { signin }= require('../controllers/signin.controller');
 const { userProfile } = require('../controllers/userProfile.controller');
-const { AddDatasetName,updateDataset}= require('../controllers/AddDatasetName.controller');
+const { AddDatasetName,updateDataset,deleteDataset}= require('../controllers/AddDatasetName.controller');
 const { uploadImageDataset } =require('../controllers/uploadImageData.controller');
 const { getprojectdetails }= require('../controllers/AddDatasetName.controller');
 const { getImageData,getScaledImageData }= require('../controllers/getImageData.controller');
@@ -53,6 +53,9 @@ const router= express.Router()
 
     /* update Dataset */
     router.post("/updateDataset",updateDataset)
+
+    /*  Delete Dataset*/
+    router.post("/deleteDataset",deleteDataset);
     
 
     /* upload dataset for single  image  */
