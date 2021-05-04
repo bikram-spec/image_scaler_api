@@ -38,10 +38,29 @@ module.exports.AddDatasetName=(req,res,next)=>{
     })
 }
 
+/* update dataset */
+module.exports.updateDataset=(req,res,next)=>{
+    projectDetails.findOne({Dataset_title:req.body.title},(err,doc)=>{
+        if(err || (!doc))
+        {
+            res.status(404).json({msg:"Failed to update the document"});
+        }
+        else 
+        {
+            doc.ObjectsToAnnotate=req.body.objects;
+            doc.Instruction=req.body.Instruction;
+            doc.save().then(
+                res.status(200).json({success:"the document updated succfully..."})
+            )
+        }
+    })
+}
+/* update dataset ends here */
+
 /* get project details method */
 
 module.exports.getprojectdetails=(req,res,next)=>{
-    projectDetails.find({'CreatedBy':req.email},'Dataset_title Instruction Date_of_creaction Dataset_type -_id',(err,projects)=>{
+    projectDetails.find({'CreatedBy':req.email},'Dataset_title Instruction Date_of_creaction Dataset_type ObjectsToAnnotate -_id',(err,projects)=>{
         if(err){
             res.send("There is an error ocured while processing your application");
         }
