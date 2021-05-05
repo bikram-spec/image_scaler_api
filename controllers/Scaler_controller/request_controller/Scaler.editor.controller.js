@@ -13,7 +13,7 @@ module.exports.seditor=(req,res,next)=>{
         }
         else 
         {
-            console.log(doc.belongsTo);
+            // console.log(doc.belongsTo);
             projectDetails.findOne({"Dataset_title":doc.belongsTo},(err,data)=>{
                 if(err || !data)
                 {
@@ -21,7 +21,7 @@ module.exports.seditor=(req,res,next)=>{
                 }
                 else 
                 {
-                    console.log(doc.filename);
+                    // console.log(doc.filename);
                     var dataobj=data.toObject();
                     dataobj.filename=doc.filename;
                     doc.Status="inprogress";
@@ -29,14 +29,14 @@ module.exports.seditor=(req,res,next)=>{
                         if(err || !doc)
                         {
                             res.send("internal server error occured ....");
-                            console.log("The Server is failed to update the document status...");
+                            // console.log("The Server is failed to update the document status...");
                         }
                         else
                         {
 
                             res.send(dataobj);
-                            console.log("update to the doument is also succfully...");
-                            console.log(dataobj);
+                            // console.log("update to the doument is also succfully...");
+                            // console.log(dataobj);
                         }
                     })
                 }

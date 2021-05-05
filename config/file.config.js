@@ -31,20 +31,23 @@ const path=require('path');
 module.exports.dataset_directory_checker=(req,res,next)=>{
     user_email=req.email.split('@')[0];
     dataset_name=req.dataset_title;
-    console.log("the  project holder email is :- ",user_email);
-    console.log("the Dataset name is :- ",dataset_name);
+    // show
+    // console.log("the  project holder email is :- ",user_email);
+    // console.log("the Dataset name is :- ",dataset_name);
     
     if(fs.existsSync(`${process.env.root_dir}/${user_email}/${dataset_name}`))
     {
-        console.log("the directory exits...");
-        console.log(`${process.env.root_dir}/${user_email}/${dataset_name}`);
+        // show
+        // console.log("the directory exits...");
+        // console.log(`${process.env.root_dir}/${user_email}/${dataset_name}`);
         req.lol=`${process.env.root_dir}/${user_email}/${dataset_name}`;
         // this.dataset_directory_checker(req,res,next);
         next();
     }
     else
     {
-        console.log("the directory does not  exits... ");
+        // show
+        // console.log("the directory does not  exits... ");
         fs.mkdir(`${process.env.root_dir}/${user_email}/${dataset_name}`,{recursive: true},function(err){
             if(err)
             {
@@ -52,7 +55,7 @@ module.exports.dataset_directory_checker=(req,res,next)=>{
             }
             else 
             {
-                console.log("succfully created direcotory...");
+                // console.log("succfully created direcotory...");
                 console.log(`${process.env.root_dir}/${user_email}/${dataset_name}`);
                 req.lol=`${process.env.root_dir}/${user_email}/${dataset_name}`;
                 next();

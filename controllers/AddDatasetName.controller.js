@@ -83,7 +83,7 @@ module.exports.deleteDataset=(req,res,next)=>{
                 if(err)
                 {
                     // res.status(500).json({errror:"Failed To delete Dataset Data..."})
-                    console.log("failed to delete the data from the server")
+                    // console.log("failed to delete the data from the server")
                 }
                 else
                 {
@@ -94,11 +94,12 @@ module.exports.deleteDataset=(req,res,next)=>{
             /* deliting from database completes here */
             /* deleting from file system  */
                 files.forEach((file)=>{
-                    fs.unlink(`${process.env.root_dir}/${file.path}`,(err)=>{
+                    console.log(`${process.env.base_dir}/${file.path}`);
+                    fs.unlink(`${process.env.base_dir}/${file.path}`,(err)=>{
                         if(err)
                         {
                             // res.status(500).json({error:"Failed to delete the file from the server"});
-                            console.log("we are failed to delete the file from server..")
+                            // console.log("we are failed to delete the file from server..")
                         }
                     })
                 })

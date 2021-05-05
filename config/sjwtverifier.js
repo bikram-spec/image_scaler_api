@@ -19,7 +19,7 @@ module.exports.sjwtverfier=(req,res,next)=>{
                 res.status(403).send("invaild json web token\n");
             }
             else {
-                console.log("The request reaaches Jwtverifier...")
+                // console.log("The request reaaches Jwtverifier...")
                 // console.log("The invalid id is ",decode['_id']);
                 scaler.findOne({_id:decode['_id']},(err,user)=>{
                     if(err || (!user)){

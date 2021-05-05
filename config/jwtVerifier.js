@@ -15,7 +15,7 @@ module.exports.jwtVerifier=(req,res,next)=>{
             var token=req.params['token'];
         }
     }
-    console.log("The request enter in jwt verifier ...")
+    // console.log("The request enter in jwt verifier ...")
     if(token){
         // token=req.headers["authorization"].split(' ')[1];
         // console.log(req.headers["authorization"]);
@@ -24,7 +24,7 @@ module.exports.jwtVerifier=(req,res,next)=>{
                 res.status(403).send("invaild json web token\n");
             }
             else {
-                console.log("The request reaaches Jwtverifier...")
+                // console.log("The request reaaches Jwtverifier...")
                 // console.log("The invalid id is ",decode['_id']);
                 users.findOne({_id:decode['_id']},(err,user)=>{
                     if(err || (!user)){
@@ -51,9 +51,9 @@ module.exports.jwtVerifier=(req,res,next)=>{
 }
 
 module.exports.Dataset_helper=(req,res,next)=>{
-    console.log("The request reaches the Dataset_helper method...")
+    // console.log("The request reaches the Dataset_helper method...")
     if("dataset_name" in req.headers){
-        console.log("The request passess the jwtverifier method...");
+        // console.log("The request passess the jwtverifier method...");
         //console.log("The request conintain valid project name...");
         dataset_title=req.headers["dataset_name"];
         //console.log(dataset_title);

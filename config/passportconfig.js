@@ -7,7 +7,7 @@ const { users } =require('../models/signup.schema');
 
 passport.use('local' ,new LocalStategy({usernameField:'email'},
     function(username,password,done){
-        console.log(username,password);
+        // console.log(username,password);
         users.findOne({email:username},(err,user)=>{
             if(err){
                 return done(err);
@@ -29,7 +29,7 @@ passport.use('local' ,new LocalStategy({usernameField:'email'},
 
 passport.use('admin' ,new LocalStategy({usernameField:'email'},
     function(username,password,done){
-        console.log(username,password);
+        // console.log(username,password);
         scaler.findOne({email:username},(err,user)=>{
             if(err){
                 return done(err);

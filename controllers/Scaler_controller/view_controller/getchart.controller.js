@@ -78,7 +78,7 @@ module.exports.getchart = (req,res,next)=>{
             })
             // sendind the final dictionaty to the client...
             // res.status(200).json(maindata);
-            console.log(labels);
+            // console.log(labels);
             req.labels=labels;
             req.completed=complete;
             req.rejected=rejected;
